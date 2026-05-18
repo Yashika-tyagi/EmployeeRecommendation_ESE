@@ -35,7 +35,7 @@ const AddEmployeePage = () => {
                 experience: Number(formData.experience)
             };
 
-            await axios.post('http://localhost:5000/api/employees', dataToSubmit, {
+            await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/employees`, dataToSubmit, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             navigate('/employees');

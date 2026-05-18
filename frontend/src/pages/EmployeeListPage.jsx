@@ -18,7 +18,7 @@ const EmployeeListPage = () => {
 
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:5000/api/employees/search${query}`, {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/employees/search${query}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEmployees(response.data);

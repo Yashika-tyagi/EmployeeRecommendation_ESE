@@ -20,14 +20,14 @@ const RecommendationPage = () => {
 
             try {
                 // Fetch employee details
-                const empResponse = await axios.get(`http://localhost:5000/api/employees`, {
+                const empResponse = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/employees`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const emp = empResponse.data.find(e => e._id === id);
                 setEmployee(emp);
 
                 // Fetch recommendation
-                const recResponse = await axios.post(`http://localhost:5000/api/ai/recommend`, { employeeId: id }, {
+                const recResponse = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ai/recommend`, { employeeId: id }, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setRecommendation(recResponse.data.recommendation);
